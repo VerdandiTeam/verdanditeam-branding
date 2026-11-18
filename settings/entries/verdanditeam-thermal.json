@@ -1,0 +1,15 @@
+{
+    "translation_catalog": "settings-system",
+    "entries": [
+        {
+            "path": "system_settings/system/thermal",
+            "title": "Temperatures",
+            "type": "page",
+            "icon": "image://theme/icon-m-diagnostic",
+            "order": 271,
+            "params": {
+                "source": "/usr/share/jolla-settings/pages/verdanditeam-thermal/ThermalPage.qml"
+            }
+        }
+    ]
+}
