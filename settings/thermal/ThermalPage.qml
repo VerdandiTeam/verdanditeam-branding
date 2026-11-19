@@ -40,7 +40,7 @@ Page {
 
     readonly property var globalRules: [
         { match: "(^|-)(ibat|vbat|vph|bcl)", group: "hidden" },
-        { match: "^soc$", group: "hidden" },
+        { match: "^socd?$", group: "hidden" },
         { match: "-lowf$", group: "hidden" },
         { match: "^lmh-dcvs", group: "hidden" },
         { match: "^zeroc-", group: "hidden" },
@@ -88,6 +88,7 @@ Page {
         { match: "^cam_flash_therm$", group: "media", label: qsTr("Camera flash") },
         { match: "^pm6125_tz$", group: "board", label: qsTr("Main PMIC") },
         { match: "^pmr735a_tz$", group: "board", label: qsTr("RF PMIC") },
+        { match: "^pm7250b_tz$", group: "battery", label: qsTr("Charger PMIC") },
         { match: "^msm_therm$", group: "board", label: qsTr("SoC board sensor") },
         { match: "^xo[-_]therm(-usr)?$", group: "board", label: qsTr("Crystal oscillator") },
         { match: "^chg_therm$", group: "battery", label: qsTr("Charger") },
@@ -97,9 +98,10 @@ Page {
         { match: "^(bms|mmi_battery)$", group: "hidden" },
         { match: "^quiet[-_]therm(-usr)?$", group: "surface", label: qsTr("Skin, quiet sensor") },
         { match: "^sdm-skin-therm-usr$", group: "surface", label: qsTr("Skin") },
+        { match: "^chg-skin-therm-usr$", group: "surface", label: qsTr("Skin near charger") },
         { match: "^front_temp$", group: "surface", label: qsTr("Front") },
         { match: "^back_temp$", group: "surface", label: qsTr("Back") },
-        { match: "^(rear-cam-therm-usr|camera-therm-usr|sony_cam_back0)$", group: "hidden" }
+        { match: "^(rear-cam-therm-usr|flash-cam-therm-usr|camera-therm-usr|sony_cam_back0)$", group: "hidden" }
     ]
 
     readonly property var miamiOnlyRules: [
@@ -177,6 +179,7 @@ Page {
         "victara": msm8974Rules,
         "miami": miamiOnlyRules.concat(blairRules),
         "xqcc72": blairRules,
+        "xqdc72": blairRules,
         "pipa": sm8250Rules,
         "enchilada": sdm845Rules,
         "fajita": sdm845Rules,

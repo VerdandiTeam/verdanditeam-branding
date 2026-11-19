@@ -250,12 +250,10 @@ function learnedCapacityMah(value, designMah) {
 
 var DEVICE_WORKAROUNDS = {
     enchilada: {
-        designFromBatteryTypeName: true,
-        chargeFullIsPlaceholder: true
+        designFromBatteryTypeName: true
     },
     fajita: {
-        designFromBatteryTypeName: true,
-        chargeFullIsPlaceholder: true
+        designFromBatteryTypeName: true
     },
     xqcc72: {
         batteryModelNameIsPlaceholder: true

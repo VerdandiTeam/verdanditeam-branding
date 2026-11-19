@@ -100,7 +100,7 @@ A zone no table matches is shown under Other with its raw name.
 
 | Rule | Why |
 |---|---|
-| Hidden by name everywhere: `ibat`, `vbat`, `vph`, `bcl`, `soc`, `lmh-dcvs`, `zeroc-`, `-lowf`, `max-step` | Qualcomm battery-limit and throttling zones: currents in mA, voltages in mV, 0/1 triggers, constant 75 °C thresholds, or copies of other zones. |
+| Hidden by name everywhere: `ibat`, `vbat`, `vph`, `bcl`, `soc`, `socd`, `lmh-dcvs`, `zeroc-`, `-lowf`, `max-step` | Qualcomm battery-limit and throttling zones: currents in mA, voltages in mV, 0/1 triggers, constant 75 °C thresholds, or copies of other zones. |
 | Readings outside −30…150 °C or empty are hidden | Disconnected thermistors (−274 °C, 1874 °C), disabled zones. |
 | Zones with the same group and label are merged | `-usr` and `-step` zones read the same sensor under different governors. The merged row keeps the lowest real limit. |
 | Limit = lowest `passive`/`hot` trip between 30 and 125 °C | Most `-usr` zones carry a 125 °C placeholder trip. Without a real trip, the group default is used: 95 °C, battery and surface 45 °C. |
@@ -111,12 +111,10 @@ Per-device notes:
 | Codename | Device | Notes |
 |---|---|---|
 | `victara` | Moto X 2014 (mainline) | 13 clean zones with real trips. Also reads the `tmp108` board sensor from hwmon, which is not a thermal zone. |
-| `miami`, `xqcc72` | Moto Edge 30 Neo, Xperia 10 IV | Same SM6375 (blair) SoC zones, different board thermistors; one shared table. `beamer-*` and `modem-mmw*` are hidden: no mmWave hardware, placeholder or impossible readings. miami's `modem-streamer-usr` is a 2 °C placeholder and is hidden there only. xqcc72's `rear-cam-therm-usr`, `camera-therm-usr` and `sony_cam_back0` read garbage and are hidden. |
+| `miami`, `xqcc72`, `xqdc72` | Moto Edge 30 Neo, Xperia 10 IV, Xperia 10 V (zambezi) | Same SM6375 (blair) SoC zones, different board thermistors; one shared table. `beamer-*` and `modem-mmw*` are hidden: no mmWave hardware, placeholder or impossible readings. miami's `modem-streamer-usr` is a 2 °C placeholder and is hidden there only. xqcc72's `rear-cam-therm-usr`, `camera-therm-usr` and `sony_cam_back0` read garbage and are hidden; xqdc72's `rear-cam-therm-usr` and `flash-cam-therm-usr` read −40 °C and are hidden too. xqdc72's `socd` is a battery-limit zone (74 with a 90 trip), hidden everywhere with `soc`. |
 | `pipa` | Xiaomi Pad 6 | SM8250. All modem zones are disabled (Wi-Fi only). `batt_therm` reads tenths of a degree and duplicates `battery`, so it is hidden. |
 | `enchilada`, `fajita` | OnePlus 6, 6T | SDM845, identical tables. |
 | `thea`, `titan` | Moto G 2014 LTE, Moto G 2014 | Old kernel: `tsens_tz_sensor*` and `pa_therm0` report whole °C, `pm8226_tz` m°C. The tsens sensors are only "SoC sensor N": thermal-engine names them `cpu0-1`, `cpu2-3`, `pop_mem`, but the mapping to sensor numbers is inside its binary. titan's `pa_therm0` reads 125 °C and is hidden there. |
-
-Not mapped yet: `zambezi`.
 
 ## Browser content
 
