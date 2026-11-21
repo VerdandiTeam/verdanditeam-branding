@@ -175,6 +175,14 @@ Page {
         { match: "^pa_therm0$", group: "hidden" }
     ]
 
+    readonly property var mt8163Rules: [
+        { match: "^mtktscpu$", group: "cpu", label: qsTr("CPU") },
+        { match: "^mtkts(\\d)$", group: "cpu", label: qsTr("SoC sensor %1") },
+        { match: "^mtktspmic$", group: "board", label: qsTr("PMIC") },
+        { match: "^therm([0-2])_s$", group: "board", label: qsTr("Board sensor %1") },
+        { match: "^(therm3_s|skin_virtual|case_virtual)$", group: "hidden" }
+    ]
+
     readonly property var deviceZoneRules: ({
         "victara": msm8974Rules,
         "miami": miamiOnlyRules.concat(blairRules),
@@ -184,7 +192,8 @@ Page {
         "enchilada": sdm845Rules,
         "fajita": sdm845Rules,
         "thea": msm8226Rules,
-        "titan": titanOnlyRules.concat(msm8226Rules)
+        "titan": titanOnlyRules.concat(msm8226Rules),
+        "crown": mt8163Rules
     })
 
     readonly property var deviceHwmonRules: ({

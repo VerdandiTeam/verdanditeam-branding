@@ -115,6 +115,7 @@ Per-device notes:
 | `pipa` | Xiaomi Pad 6 | SM8250. All modem zones are disabled (Wi-Fi only). `batt_therm` reads tenths of a degree and duplicates `battery`, so it is hidden. |
 | `enchilada`, `fajita` | OnePlus 6, 6T | SDM845, identical tables. |
 | `thea`, `titan` | Moto G 2014 LTE, Moto G 2014 | Old kernel: `tsens_tz_sensor*` and `pa_therm0` report whole °C, `pm8226_tz` m°C. The tsens sensors are only "SoC sensor N": thermal-engine names them `cpu0-1`, `cpu2-3`, `pop_mem`, but the mapping to sensor numbers is inside its binary. titan's `pa_therm0` reads 125 °C and is hidden there. |
+| `crown` | Amazon Echo Show 8 | MT8163, 4.9 kernel. `mtktscpu` is the maximum of the `mtkts1`–`mtkts5` SoC sensors, `mtktspmic` is the MT6323. `therm0_s`–`therm3_s` are board NTCs on AUXADC channels 0–3; `therm3_s` is stuck at −15 °C and hidden. `skin_virtual` is 0.008·(therm0 − 61.1) + 0.759·(therm3 + 16.1), so it reads 0.7 °C off the dead therm3 and is hidden. `case_virtual` is a smoothed copy of `mtktscpu` and is hidden. Trip points are mode 660 `system:system`, unreadable from jolla-settings, so every limit is the group default. |
 
 ## Browser content
 
